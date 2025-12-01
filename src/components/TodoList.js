@@ -36,12 +36,12 @@ const initialTodos = [
   },
 ];
 
-const TodoList = () => {
+const TodoList = ({ initial = initialTodos, showHideToast = () => {}  }) => {
  
   const [todos, settodos] = useState(initialTodos);
   const [titleInput, settitleInput] = useState("");
   const [displayTask, setdisplayTask] = useState("all");
-  const {showHideToast} = useContext(ToastContext);
+ 
   // dark mode
   const theme = useTheme();
 
