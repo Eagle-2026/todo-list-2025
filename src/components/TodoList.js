@@ -47,21 +47,24 @@ const TodoList = ({ initial = initialTodos, showHideToast = () => {}  }) => {
 
   // event handler
   // check
-  function handleCheckClick(todoid) {
-    const updatedTodos = todos.map((t) => {
-      if (t.id === todoid) {
-        t.isCompleted = !t.isCompleted;
-        if (t.isCompleted) {
+function handleCheckClick(todoid) {
+  const updatedTodos = todos.map((t) => {
+    if (t.id === todoid) {
+      const updatedTodo = { ...t, isCompleted: !t.isCompleted };
+
+      if (updatedTodo.isCompleted) {
         showHideToast("You've Done your Task");
       }
-      }
-      return t;
-    });
-    settodos(updatedTodos);
-    localStorage.setItem("todos", JSON.stringify(updatedTodos));
-   
 
-  }
+      return updatedTodo;
+    }
+    return t;
+  });
+
+  settodos(updatedTodos);
+  localStorage.setItem("todos", JSON.stringify(updatedTodos));
+}
+
   // delete
   function handleDeleteConfirm(confirmId) {
     const updatedTodos = todos.filter((t) => t.id !== confirmId);
@@ -151,7 +154,7 @@ const TodoList = ({ initial = initialTodos, showHideToast = () => {}  }) => {
     const storageTodos = JSON.parse(localStorage.getItem("todos"));
     if (storageTodos) {
       settodos(storageTodos);
-      settodos(storageTodos);
+   
     }
   }, []);
 
