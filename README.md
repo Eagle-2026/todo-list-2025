@@ -27,6 +27,9 @@ Features include **task filtering**, **dark/light mode**, and **toast notificati
 - LocalStorage for storing tasks
 
 ---
+## 🚀 Live Demo
+https://todo-list-two-kappa-56.vercel.app
+----
 
 ## How to Run Locally
 1. Clone the repository:
